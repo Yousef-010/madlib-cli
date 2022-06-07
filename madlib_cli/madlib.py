@@ -4,22 +4,20 @@ print('Welcome to Madlib game ')
 print('Madlib game its maybe funny game ')
 print('please answer the questions')
 print('************************************')
+# path_2 = 'assets/make_me_a_video_game_template'
 
 
-# shoose this path to see the all game in the terminal and UNCOMMENT the last function
-# path = 'assets/make_me_a_video_game_template'
 
-# this path is just to pytest
-path = 'assets/dark_and_stormy_night_template'
+# path = 'assets/dark_and_stormy_night_template'
 regex = r'\{(.*?)}'
 
 
-def read_template(path):
+def read_template(path_2):
     try:
-        with open(path, 'r') as file:
+        with open(path_2, 'r') as file:
             content_inside_file = file.read()
         return content_inside_file
-    except  FileNotFoundError as err:
+    except FileNotFoundError as err:
         raise err
 
 print('________________________________________________________________________________________________________________________________')
@@ -35,7 +33,7 @@ def merge(string, tuple):
     # print(new_string.format(tuple))
     return new_string.format(*tuple)
 
-def show_game (path):
+def show_game (path_2):
     Adjective_one = input('Please Enter an Adjective_one : ')
     Adjective_two = input('Please Enter an Adjective_two: ')
     A_First_Name_one = input('Please Enter an A_First_Name_one: ')
@@ -60,17 +58,22 @@ def show_game (path):
 
     user_input = (Adjective_one, Adjective_two, A_First_Name_one, Past_tens_verb, A_First_Name_two, Adjective_three, Adjective_four, Plural, Large_Animal, Small_Animal, A_girls_Name,Adjective_five, Plural_two, Adjective_six, Plural_three, Number_from_1_50, A_First_Name_three, Number, Plural_four, Number_two, Plural_five)
 
-    r = read_template(path)
+    r = read_template(path_2)
     p = parse_template(r)[0]
-    m = merge(p,user_input)
+    m = merge(p, user_input)
     return m
 
-def copy_file():
-    new_file = show_game(path)
-    with open('assets/copy_file', 'a') as f:
-        f.write(new_file)
 
-# print(copy_file())
+
+def copy_file():
+
+    new_file = show_game('./assets/make_me_a_video_game_template')
+    with open('./assets/copy_file', 'a') as f:
+        f.write(new_file)
+    print(new_file)
+
+
+copy_file()
 
 print('________________________________________________________________________________________________________________________________')
 
